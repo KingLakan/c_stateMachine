@@ -13,7 +13,7 @@ void initStateMachine() {
 void currentState() { getCurrentStateNr(); }
 void getCurrentStateAdress() { stateAdress = getCurrentState(); }
 void sm_next(state toGoTo) {
-  delay(10);
+  delay(1);
   toGoTo(1);
 }
 void setEvent(int i) { my_event.event_a = i; }
