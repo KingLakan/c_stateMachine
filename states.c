@@ -8,12 +8,12 @@ void initState(int a) { printf("You are in init state");
 }
 
 void state1(int a) { 
-    printf("State1 %d\n",a);
+    printf("State1\n");
     my_state.current_state = 1;
     my_state.current_state_adress = &state1;
 
     sleep(1);
-    printf("%d\n", my_event.event_a);
+    printf("Received event%d\n", my_event.event_a);
 
     if (my_event.event_a == 1) {
       printf("State 1 triggered to change\n");
@@ -26,12 +26,12 @@ void state1(int a) {
     }
 }
 void state2(int a) { 
-    printf("State2 %d\n",a);
+    printf("State2\n");
     my_state.current_state = 2;
     my_state.current_state_adress = &state2;
 
     sleep(1);
-    printf("%d\n", my_event.event_a);
+    printf("Received event %d\n", my_event.event_a);
 
     if (my_event.event_a == 2) {
       printf("State 2 triggered to change\n");
@@ -43,7 +43,7 @@ void state2(int a) {
     }
 }
 void state3(int a) { 
-    printf("State3 %d\n",a);
+    printf("State3\n");
     my_state.current_state = 3;
     my_state.current_state_adress = &state3;
 
