@@ -7,56 +7,56 @@ void initState(int a) { printf("You are in init state");
   my_state.current_state = 0;
 }
 
-void state1(int a) { 
-    printf("State1\n");
-    my_state.current_state = 1;
-    my_state.current_state_adress = &state1;
+void state1(int a) {
+  printf("State1, entry: %d\n",a);
+  my_state.current_state = 1;
+  my_state.current_state_adress = &state1;
 
-    sleep(1);
-    printf("Received event%d\n", my_event.event_a);
+  sleep(1);
+  printf("Received event%d\n", my_event.event_a);
 
-    if (my_event.event_a == 1) {
-      printf("State 1 triggered to change\n");
-      state next = &state2;
-      sm_next(next);
-      // next(2);
+  if (my_event.event_a == 1) {
+    printf("State 1 triggered to change\n");
+    state next = &state2;
+    sm_next(22, next);
+    // next(2);
     } else {
       state next = &state1;
-      sm_next(next);
+      sm_next(11,next);
     }
 }
-void state2(int a) { 
-    printf("State2\n");
-    my_state.current_state = 2;
-    my_state.current_state_adress = &state2;
+void state2(int a) {
+  printf("State2, entry: %d\n", a);
+  my_state.current_state = 2;
+  my_state.current_state_adress = &state2;
 
-    sleep(1);
-    printf("Received event %d\n", my_event.event_a);
+  sleep(1);
+  printf("Received event %d\n", my_event.event_a);
 
-    if (my_event.event_a == 2) {
-      printf("State 2 triggered to change\n");
-      state next = &state3;
-      sm_next(next);
+  if (my_event.event_a == 2) {
+    printf("State 2 triggered to change\n");
+    state next = &state3;
+    sm_next(33, next);
     } else {
       state next = &state2;
-      sm_next(next);
+      sm_next(22,next);
     }
 }
-void state3(int a) { 
-    printf("State3\n");
-    my_state.current_state = 3;
-    my_state.current_state_adress = &state3;
+void state3(int a) {
+  printf("State3, entry: %d\n", a);
+  my_state.current_state = 3;
+  my_state.current_state_adress = &state3;
 
-    sleep(1);
-    printf("%d\n", my_event.event_a);
-    
-    if (my_event.event_a == 3) {
-      printf("State 3 triggered to change\n");
-      state next = &state1;
-      sm_next(next);
+  sleep(1);
+  printf("Received event %d\n", my_event.event_a);
+
+  if (my_event.event_a == 3) {
+    printf("State 3 triggered to change\n");
+    state next = &state1;
+    sm_next(11, next);
     } else {
       state next = &state3;
-      sm_next(next);
+      sm_next(33,next);
     }
 }
 

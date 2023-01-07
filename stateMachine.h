@@ -11,6 +11,6 @@ void initStateMachine();
 //void changeState(state newState);
 void currentState();
 void getCurrentStateAdress();
-void sm_next(state);
+void sm_next(int a,void (*state)(int a));
 
 #endif /* B743ADFF_E728_42C5_93A8_443724049E91 */

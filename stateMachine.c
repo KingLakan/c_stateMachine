@@ -13,7 +13,5 @@ void initStateMachine() {
 
 void currentState() { getCurrentStateNr(); }
 void getCurrentStateAdress() { stateAdress = getCurrentState(); }
-void sm_next(state toGoTo) {
-  toGoTo(1);
-}
-
+void sm_next(int a, state toGoTo)
+ { toGoTo(a); }
