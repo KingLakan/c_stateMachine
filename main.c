@@ -6,7 +6,7 @@
 
 #include "stateMachine.h"
 #include "states.h"
-myEvent my_event;
+myEvent my_event; //Used as external event, that statemachine reacts on
 
 void *eventProducer(void *id) {
   int testInteger = 1;
@@ -34,5 +34,4 @@ int main(void) {
   initStateMachine();
   pthread_exit(NULL);  // main waits for threads
   return 0;
-  // gcc-10 main.c states.c stateMachine.c -lpthread -o main && ./main
 }
