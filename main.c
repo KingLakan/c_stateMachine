@@ -1,33 +1,38 @@
 
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
 #include "stateMachine.h"
 #include "states.h"
+myEvent my_event;
 
+void *eventProducer(void *id) {
+  int testInteger = 1;
+//   while (testInteger != 99) {
+//     printf("Enter an integer: \n");
+//     scanf("%d", &testInteger);
+//     my_event.event_a = testInteger;
+//   }
+    while(testInteger<4)
+    {
+      my_event.event_a = testInteger;
+      testInteger++;
+      if (testInteger == 4){
+        testInteger = 0;
+      }
+    //   printf("producer %d\n", my_event.event_a);
+      sleep(2);
+    }
+}
 
 int main(void) {
-  int a = 11;
-  int b = 22;
-  int c = 33;
-
-//   my_event.event_a =1;
-//   initStateMachine();
-//   my_event.event_a = 2;
-
-  //my_event.event_a = 2;
-  //my_event.event_a = 3;
-  //currentState();
-
- initStateMachine();
-// while(1){
-//   printf("hej\n");
-//   sleep(1);
-// }
-  //   states f = {&state1, &state2, &state3};
-  //   my_event.event_a = 1;
-  //   APA_MACRO(f[0], a);
-  //   my_event.event_a = 2;
-  //   APA_MACRO(f[1], b);
-  //   my_event.event_a = 3;
-  //   APA_MACRO(f[2], c);
+  pthread_t eventThread;
+  pthread_create(&eventThread, NULL, eventProducer, (void *)&eventThread);
+  
+  initStateMachine();
+  pthread_exit(NULL);  // main waits for threads
   return 0;
-  // gcc - 10 main.c states.c stateMachine.c - o main&&./ main return 0;
+  // gcc-10 main.c states.c stateMachine.c -lpthread -o main && ./main
 }

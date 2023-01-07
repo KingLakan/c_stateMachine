@@ -1,17 +1,16 @@
 #ifndef B743ADFF_E728_42C5_93A8_443724049E91
 #define B743ADFF_E728_42C5_93A8_443724049E91
+#include <pthread.h>
 #include <stdio.h>
-#include <time.h>
-#include "states.h"
+#include <stdlib.h>
+#include <unistd.h>
 
-typedef struct {
-  int event_a;
-} myEvent;
+#include "states.h"
 
 void initStateMachine();
 //void changeState(state newState);
 void currentState();
 void getCurrentStateAdress();
 void sm_next();
-void delay(int number_of_seconds);
+
 #endif /* B743ADFF_E728_42C5_93A8_443724049E91 */
